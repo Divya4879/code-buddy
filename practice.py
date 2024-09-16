@@ -22,6 +22,21 @@ model = genai.GenerativeModel("gemini-1.5-flash")
 #     ),
 # )
 
+
+response = model.generate_content(" You're  a personal gym trainer with over 10 yrs of experience. You've helped many celebrities achieve their weight loss.Give me a general workout plan for 7 days for a normal person with just the list of exercises and their sets and reps to be performed that a person who wants to tone up should do.All exercises should be bodyweight only. This student is an beginner-intermediate level in workout.",
+    generation_config=genai.types.GenerationConfig(
+        # Only one candidate for now.
+        candidate_count=1,
+        stop_sequences=["x"],
+        max_output_tokens=1000,
+        temperature=0,
+    ),
+)
+
+print(response.text)
+
+
+
 # print(response.text)
 
 # response = model.generate_content(
@@ -83,13 +98,13 @@ model = genai.GenerativeModel("gemini-1.5-flash")
 
 
 
-model = genai.GenerativeModel("gemini-1.5-flash")
-chat = model.start_chat(
-    history=[
-        {"role": "user", "parts": "Hello, I have 2 dogs in my house."},
-        {"role": "model", "parts": "Great to meet you. What would you like to know?"},
-    ]
-)
+# model = genai.GenerativeModel("gemini-1.5-flash")
+# chat = model.start_chat(
+#     history=[
+#         {"role": "user", "parts": "Hello, I have 2 dogs in my house."},
+#         {"role": "model", "parts": "Great to meet you. What would you like to know?"},
+#     ]
+# )
 
-response = chat.send_message("How many paws are in my house?")
-print(response.text)
+# response = chat.send_message("How many paws are in my house?")
+# print(response.text)
